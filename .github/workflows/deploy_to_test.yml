@@ -27,4 +27,6 @@ jobs:
       - run: |
           echo "Deployed branch ${{inputs.branch}} to ${{ inputs.environment }} environment"
       - run: |
+          echo "${{ toJSON(inputs) }}"
+      - run: |
           echo "${{ toJSON(github) }}"
