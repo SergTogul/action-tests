@@ -7,10 +7,7 @@ on:
         description: 'Environment to deploy'
         required: true
         type: choice
-        options:
-          - test 1
-          - test 2
-          - dev
+        options: ${{ git branch }}
       branch:
         description: 'Branch to deploy'
         required: true
