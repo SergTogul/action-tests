@@ -16,13 +16,27 @@ jobs:
     steps:
       - run: |
           echo "Deploying to test environment"
-  deploy-to-blue-env:
+  run-tests-in-test-env:
     needs: deploy-to-test-env
+    runs-on: ubuntu-latest
+    environment: test
+    steps:
+      - run: |
+          echo "Running tests in test environment"
+  deploy-to-blue-env:
+    needs: run-tests-in-test-env
     runs-on: ubuntu-latest
     environment: prod-blue
     steps:
       - run: |
           echo "Deploying to prod-blue environment"
+  run-canaries-in-blue-env:
+    needs: deploy-to-blue-env
+    runs-on: ubuntu-latest
+    environment: test
+    steps:
+      - run: |
+          echo "Deploying to test environment"
   deploy-to-prod-env:
     needs: deploy-to-blue-env
     runs-on: ubuntu-latest
