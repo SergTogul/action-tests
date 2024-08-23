@@ -7,7 +7,10 @@ on:
         description: 'Environment to deploy'
         required: true
         type: choice
-        options: ${{ git branch }}
+        options:
+          - dev
+          - test 1
+          - test 2
       branch:
         description: 'Branch to deploy'
         required: true
@@ -22,6 +25,6 @@ jobs:
     environment: ${{ inputs.environment_auto }}
     steps:
       - run: |
-          echo "Deployed branch ${{inputs.branch}} to ${{ inputs.environment_auto }} environment"
+          echo "Deployed branch ${{inputs.branch}} to ${{ inputs.environment }} environment"
       - run: |
           echo "${{ toJSON(github) }}"
