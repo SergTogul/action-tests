@@ -1,0 +1,29 @@
+name: Deploy to test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "Building branch ${{github.event.ref}}"
+  deploy-to-test-env:
+    runs-on: ubuntu-latest
+    environment: test
+    steps:
+      - run: |
+          echo "Deploying to test environment"
+  deploy-to-blue-env:
+    runs-on: ubuntu-latest
+    environment: prod-blue
+    steps:
+      - run: |
+          echo "Deploying to prod-blue environment"
+  deploy-to-prod-env:
+    runs-on: ubuntu-latest
+    environment: prod
+    steps:
+      - run: |
+          echo "Deploying to prod-blue environment"
