@@ -1,0 +1,34 @@
+name: Deploy to test
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment_manual:
+        description: 'Environment to deploy'
+        required: true
+        type: choice
+        options:
+          - test 1
+          - test 2
+          - dev
+      environment_auto:
+        description: 'Environment to deploy'
+        required: true
+        type: environment
+      branch:
+        description: 'Branch to deploy'
+        required: true
+      dry_run:
+        description: 'No real deletions are performed'
+        type: boolean
+        required: false
+
+jobs:
+  deploy-to-env:
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment_auto }}
+    steps:
+      - run: |
+          echo "Deployed branch ${{inputs.branch}} to ${{ inputs.environment_auto }} environment"
+      - run: |
+          echo "${{ toJSON(github) }}"
