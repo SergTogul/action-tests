@@ -19,7 +19,7 @@ on:
         description: 'Branch to deploy'
         required: true
       dry_run:
-        description: 'No real deletions are performed'
+        description: 'No real deployment performed'
         type: boolean
         required: false
 
