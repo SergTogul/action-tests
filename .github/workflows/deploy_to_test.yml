@@ -11,15 +11,11 @@ on:
           - test 1
           - test 2
           - dev
-      environment_auto:
-        description: 'Environment to deploy'
-        required: true
-        type: environment
       branch:
         description: 'Branch to deploy'
         required: true
       dry_run:
-        description: 'No real deployment performed'
+        description: 'Dry run: no real deployment performed'
         type: boolean
         required: false
 
