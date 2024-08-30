@@ -24,6 +24,11 @@ jobs:
     runs-on: ubuntu-latest
     environment: ${{ inputs.environment_auto }}
     steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+      - run: |
+          which python
       - run: |
           echo "Deployed branch ${{inputs.branch}} to ${{ inputs.environment }} environment"
       - run: |
