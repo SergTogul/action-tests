@@ -36,6 +36,7 @@ jobs:
       - run: |
           echo "${{ toJSON(github) }}"
   helth-check:
+    needs: deploy-to-env
     runs-on: ubuntu-latest
     environment: ${{ inputs.environment_auto }}
     steps:
@@ -47,6 +48,7 @@ jobs:
       - run: |
           echo "Verifying the service heals in ${{ inputs.environment }} environment"
   canaries-check:
+    needs: helth-check
     runs-on: ubuntu-latest
     environment: ${{ inputs.environment_auto }}
     steps:
